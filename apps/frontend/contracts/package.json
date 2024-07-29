@@ -1,0 +1,43 @@
+{
+  "name": "rwa-tokenization-contracts",
+  "version": "1.0.0",
+  "description": "RWA tokenization using Chainlink Functions on Avalanche.",
+  "main": "index.js",
+  "repository": "https://github.com/SmartContractKit/rwa-tokenization.git",
+  "author": "Buns Enchantress <bunsthedev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "signin": "npx env-enc set-pw",
+    "setup": "npx env-enc set",
+    "build": "npx hardhat compile",
+    "price": "node script/getPrice.js",
+    "flat": "forge flatten --output src/flats/RealEstate.sol src/RealEstate.sol",
+    "deploy": "forge script script/RealEstate.s.sol:RealEstateScript --rpc-url https://api.avax-test.network/ext/bc/C/rpc --broadcast",
+    "sub:create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0x50D7b9B557F5e77DC2d782096aCcA9d15CD8Cb67",
+    "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0x50D7b9B557F5e77DC2d782096aCcA9d15CD8Cb67 --subid 11426",
+    "request": "npx hardhat func-request --network avalancheFuji --contract 0x50D7b9B557F5e77DC2d782096aCcA9d15CD8Cb67 --subid 11426 --tokenid 0",
+    "response": "npx hardhat func-response --network avalancheFuji --contract 0x50D7b9B557F5e77DC2d782096aCcA9d15CD8Cb67 --tokenid 0"
+  },
+  "dependencies": {
+    "@chainlink/env-enc": "^1.0.5",
+    "@chainlink/functions-toolkit": "^0.2.8"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.6",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-foundry": "^1.1.1",
+    "@nomiclabs/hardhat-ethers": "^2.2.2",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^9.1.0",
+    "chai": "^4.3.6",
+    "hardhat": "^2.22.2",
+    "hardhat-contract-sizer": "^2.6.1",
+    "hardhat-gas-reporter": "^2.1.0",
+    "ora": "5.4.1",
+    "solidity-coverage": "^0.8.12",
+    "typechain": "^8.3.2"
+  }
+}

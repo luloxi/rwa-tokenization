@@ -1,0 +1,3 @@
+@chainlink/contracts/=lib/chainlink/contracts/
+@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
+@chainlink/local/=lib/chainlink-local/
